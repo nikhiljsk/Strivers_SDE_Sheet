@@ -18,3 +18,21 @@ func twoSum(nums []int, target int) []int {
 	}
 	return []int{}
 }
+
+// Follow-up question - GFG
+// If two unsorted arrays are given, and to find a pair
+// O(N * LogN), O(N)
+func allPairs(A, B []int, N, M, X int) [][]int {
+	found := make(map[int]int)
+	var res [][]int
+	sort.Ints(A[:])
+	for i := 0; i < len(B); i++ {
+		found[B[i]] = i
+	}
+	for i := 0; i < len(A); i++ {
+		if _, ok := found[X-A[i]]; ok {
+			res = append(res, []int{A[i], B[found[X-A[i]]]})
+		}
+	}
+	return res
+}
