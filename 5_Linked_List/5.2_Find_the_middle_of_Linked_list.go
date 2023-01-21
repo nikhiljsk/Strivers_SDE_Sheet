@@ -1,4 +1,4 @@
-// O(N), O(1)
+// O(N/2), O(1)
 func middleNode(head *ListNode) *ListNode {
 	t, h := head, head
 	for h != nil && h.Next != nil {
