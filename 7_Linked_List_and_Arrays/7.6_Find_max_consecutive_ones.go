@@ -1,3 +1,5 @@
+// Approach 1
+// O(N), O(1)
 func findMaxConsecutiveOnes(nums []int) int {
 	local, global := 0, 0
 	for i := 0; i < len(nums); i++ {
