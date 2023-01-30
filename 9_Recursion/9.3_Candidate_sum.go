@@ -1,3 +1,5 @@
+// Approach 1
+// Similar to Subset Sums, just pick and not pick. But while picking don't increment
 // O(2**N), O(Number of combinations)
 func helper(candidates []int, target int, ind int, ds []int, res *[][]int) {
 	if ind == len(candidates) {
