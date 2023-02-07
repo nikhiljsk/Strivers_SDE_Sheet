@@ -29,7 +29,7 @@ def merge(self,arr1,arr2,n,m):
 		if arr1[i] > arr2[0]:
 			arr1[i], arr2[0] = arr2[0], arr1[i]
 
-			// Selection sort, find the right place for arr2[0] in arr2
+			// Insertion sort, find the right place for arr2[0] in arr2
 			first = arr2[0]
 			j = 1
 			while j<m and first > arr2[j]:

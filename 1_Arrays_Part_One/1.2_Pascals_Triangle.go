@@ -50,6 +50,7 @@ func generate(n int) [][]int {
 // where n=4, k=3
 // For more info: https://www.youtube.com/watch?v=6FLvhQjZqvM&list=PLgUwDviBIf0rPG3Ictpu74YWBQ1CaBkm2&index=9&ab_channel=takeUforward
 // O(N), O(1)
+res = 1
 for i:=0; i<k; i++{
 	res *= (n-i)
 	res /= (i+1)
