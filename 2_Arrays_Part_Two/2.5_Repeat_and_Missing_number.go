@@ -35,11 +35,33 @@ func repeat_missing2(nums []int) []int {
 	a1 := s - s_1
 	a2 := s2 - s_2
 
-	x_plus_y := a2 / a1
-	x := (a1 + x_plus_y) / 2
+	// x_plus_y := a2 / a1
+	// x := (a1 + x_plus_y) / 2
+	// y := x - a1
+
+	// Or Simply put
+	x := (a1 + a2/a1) / 2
 	y := x - a1
 
 	return []int{y, x}
+
+}
+
+// Cleaner code for above
+func repeatedNumber(nums []int) []int {
+	n := len(nums)
+	s := (n * (n + 1)) / 2
+	s2 := (n * (n + 1) * ((2 * n) + 1)) / 6
+
+	for _, v := range nums {
+		s -= v
+		s2 -= (v * v)
+	}
+
+	missing_number := (s + s2/s) / 2
+	repeating := missing_number - s
+
+	return []int{repeating, missing_number}
 
 }
 
