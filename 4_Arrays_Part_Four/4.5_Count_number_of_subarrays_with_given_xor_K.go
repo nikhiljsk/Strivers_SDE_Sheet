@@ -40,3 +40,24 @@ func solve(arr []int, target int) int {
 	}
 	return count
 }
+
+// Python Code
+"""
+from collections import defaultdict
+
+class Solution:
+    def solve(self, arr, target):
+        prefix_xor = defaultdict(int)
+        curr_xor, count = 0, 0
+        for i in range(len(arr)):
+            curr_xor ^= arr[i]
+            if curr_xor == target:
+                count += 1
+
+            y = curr_xor ^ target # Y = XR ^ K
+            if y in prefix_xor:
+                count += prefix_xor[y]
+
+            prefix_xor[curr_xor] += 1
+        return count
+"""
