@@ -3,7 +3,7 @@
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	preHead := &ListNode{Next: head}
 	t, h := preHead, head
-	for i := 0; i < n && h != nil; i++ {
+	for i := 0; i < n; i++ {
 		h = h.Next
 	}
 	for h != nil {
@@ -30,3 +30,19 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	t.Next = t.Next.Next
 	return preHead.Next
 }
+
+// Python Code
+"""
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        preHead = ListNode(0, head)
+        t, r = preHead, head
+        for i in range(n):
+            r = r.next
+
+        while r:
+            t = t.next
+            r = r.next
+        t.next = t.next.next
+        return preHead.next
+"""

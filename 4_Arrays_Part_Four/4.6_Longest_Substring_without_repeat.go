@@ -27,7 +27,7 @@ func lengthOfLongestSubstring(s string) int {
 }
 
 // Approach 2 - Sliding Window
-// O(2N), O(1)
+// O(2N), O(N)
 // Keep decrementing l, and deleting the entry in hashmap until r is not found
 func lengthOfLongestSubstring(s string) int {
 	l, count := 0, 0
@@ -69,3 +69,22 @@ func lengthOfLongestSubstring(s string) int {
 	}
 	return count
 }
+
+
+// Python Code
+"""
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        res = 0
+        for i in range(len(s)):
+            count = 0
+            found = dict()
+            for j in range(i, len(s)):
+                if s[j] in found:
+                    count = max(count, j-i)
+                    break
+                count += 1
+                found[s[j]] = True
+            res = max(res, count)
+        return res
+"""
