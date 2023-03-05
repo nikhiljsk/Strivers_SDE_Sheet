@@ -63,7 +63,6 @@ class Solution(object):
 
 // Approach 3
 // O(N), O(1)
-// TODO: Check this again
 func reverseKGroup(head *ListNode, k int) *ListNode {
     if head == nil || k == 1 {
         return head

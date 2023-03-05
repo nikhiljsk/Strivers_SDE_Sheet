@@ -21,5 +21,5 @@ class Solution:
             if curr.left: s.append(curr.left)
             if curr.right: s.append(curr.right)
 
-# TODO:
+# TODO Followup
 # https://www.codingninjas.com/codestudio/problems/invert-a-binary-tree_1281382
