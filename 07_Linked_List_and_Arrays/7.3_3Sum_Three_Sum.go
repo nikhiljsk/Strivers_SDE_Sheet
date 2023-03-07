@@ -1,4 +1,4 @@
-// Approach 1
+// Approach 1 - TLE!
 // Brute Force
 // O(n3), O(3^k) where k is number of triplets - If Solution space is considered
 func threeSum(nums []int) [][]int {
@@ -22,7 +22,27 @@ func threeSum(nums []int) [][]int {
 	return res
 }
 
-// Approach 1
+// Python Code - TLE!
+// Using a tuple which is inserted in set for de-duplication
+"""
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        n, res, found = len(nums), list(), set()
+
+        for i in range(n-2):
+            for j in range(i+1, n-1):
+                for k in range(j+1, n):
+                    a, b, c = nums[i], nums[j], nums[k]
+                    if a+b+c == 0:
+                        triplet = tuple(sorted([a, b, c]))
+                        if triplet not in found:
+                            found.add(triplet)
+                            res.append(list(triplet))
+
+        return res
+"""
+
+// Approach 2
 // O(N2), O(3^k)
 func threeSum(nums []int) [][]int {
 	sort.Ints(nums)

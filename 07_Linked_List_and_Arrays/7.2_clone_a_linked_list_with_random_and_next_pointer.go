@@ -62,6 +62,33 @@ func copyRandomList(head *Node) *Node {
 	return store[head]
 }
 
+// Python Code
+// It is important to check if iter.next and iter.random are not None,
+// Cause in GO, dict will return None wihtout causing issues.
+"""
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        if not head: return head
+
+        iter, newNodes = head, dict()
+
+        while iter:
+            temp = Node(iter.val)
+            newNodes[iter] = temp
+            iter = iter.next
+
+
+        iter = head
+        while iter:
+            if iter.next:
+                newNodes[iter].next = newNodes[iter.next]
+            if iter.random:
+                newNodes[iter].random = newNodes[iter.random]
+            iter = iter.next
+
+        return newNodes[head]
+"""
+
 // Approach 3
 // 1. Make a copy of each node and insert it right next to the node,
 // 2. Then populate Next and random values.
