@@ -19,25 +19,25 @@ def mergeTwoLL(a, b):
             temp.bottom = b
             temp = b
             b = b.bottom
-    
+
     return res.bottom
-            
-            
+
+
 def flatten(root):
     # Base Condition
     if root == None or root.next == None:
         return root
-    
+
     # Start recursion to the last set
     root.next = flatten(root.next)
-    
+
     # Once it reaches here, start merging
     root = mergeTwoLL(root, root.next)
-    
+
     return root
 
 
-# Approach 1
+# Approach 2
 # O(All nodes), O(N) - If solution space is considered
 # Iterative approach - Start from the beginning
 def mergeTwoLL(a, b):
@@ -58,7 +58,7 @@ def mergeTwoLL(a, b):
             temp.bottom = b
             temp = b
             b = b.bottom
-    
+
     return res.bottom
 
 

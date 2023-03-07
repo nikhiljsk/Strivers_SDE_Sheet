@@ -6,6 +6,7 @@
 // O(N), O(1)
 // Refer Notion for intuition or
 // https://www.youtube.com/watch?v=QfbOhn0WZ88&list=PLgUwDviBIf0p4ozDR_kJJkONnb1wdx2Ma&index=38&ab_channel=takeUforward
+// L1 = nC - L2
 func detectCycle(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil {
 		return nil
@@ -28,10 +29,7 @@ func detectCycle(head *ListNode) *ListNode {
 	t = head
 	for t != h {
 		t = t.Next
-		h = h.Next
-		if t == h {
-			return t
-		}
+		h = h.Next\
 	}
 	return t
 

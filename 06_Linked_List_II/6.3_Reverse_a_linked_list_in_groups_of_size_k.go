@@ -40,6 +40,13 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 // Approach 2 - Python
 // This approach is sort off the above approach but with the right intuition
 // O(N), O(K)
+def printLL(head):
+    while head:
+        print(head.val, end="->")
+        head = head.next
+    print()
+    return
+
 class Solution(object):
     def reverseKGroup(self, head, k):
         count, node = 0, head
@@ -50,7 +57,7 @@ class Solution(object):
         new_head, prev = self.reverse(head, count)
         head.next = self.reverseKGroup(new_head, k)
         return prev
-    
+
     def reverse(self, head, count):
         prev, cur, nxt = None, head, head
         while count > 0:
@@ -93,3 +100,35 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
     return dummy.Next
 
 }
+
+// Python Code
+"""
+class Solution:
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        if not head or k==1:
+            return head
+
+        dummy = ListNode(0, head)
+        curr, nxt, prev = dummy, dummy, dummy
+        count = 0
+
+        # Len of LL
+        while curr.next:
+            count += 1
+            curr = curr.next
+
+        # Process in groups of k size
+        while count >= k:
+            curr = prev.next
+            nxt = curr.next
+
+            for i in range(0, k-1):
+                curr.next = nxt.next
+                nxt.next = prev.next
+                prev.next = nxt
+                nxt = curr.next
+            prev = curr
+            count -= k
+
+        return dummy.next
+"""
