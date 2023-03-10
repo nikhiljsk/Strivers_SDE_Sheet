@@ -14,3 +14,17 @@ func findMaxConsecutiveOnes(nums []int) int {
 	}
 	return global
 }
+
+// Python Code
+"""
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        l, g = 0, 0
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                l = 0
+            else:
+                l+=1
+            g = max(l, g)
+        return g
+"""

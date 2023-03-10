@@ -22,7 +22,7 @@ func max(a, b int) int {
 func trap(height []int) int {
 	n := len(height)
 	preSum, sufSum := make([]int, n), make([]int, n)
-	i, j := height[0], height[n-1]
+	i, j := 0, 0
 	for k := 0; k < n; k++ {
 		if i < height[k] {
 			i = height[k]

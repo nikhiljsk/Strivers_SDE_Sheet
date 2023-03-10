@@ -20,13 +20,11 @@ def maximumMeetings(self,n,start,end):
 # Approach 2
 # If meeting number is asked to be retured, store the index
 # O(N * LogN), O(N)
-def maximumMeetings(start, end):
+def maximumMeetings(self,n,start,end):
     times = list()
 
-    ind = 1
-    for i, j in zip(start, end):
-        times.append([i, j, ind])
-        ind += 1
+    for ind, (i, j) in enumerate(zip(start, end)):
+        times.append([i, j, ind+1])
 
     # Sort based on end time
     times = sorted(times, key=lambda x: x[1])
