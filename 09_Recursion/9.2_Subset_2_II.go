@@ -23,6 +23,29 @@ func subsetsWithDup(nums []int) [][]int {
 	return res
 }
 
+"""
+// Python Code for Brute force - Works!
+class Solution:
+    def helper(self, nums, ind, ds, res):
+        if ind == len(nums):
+            ds.sort()
+            res.add(tuple(ds))
+            return
+        temp = ds.copy()
+        ds.append(nums[ind])
+        self.helper(nums, ind + 1, ds, res)
+        self.helper(nums, ind + 1, temp, res)
+
+    def subsetsWithDup(self, nums):
+        ans = []
+        res = set()
+
+        self.helper(nums, 0, [], res)
+        for it in res:
+            ans.append(list(it))
+        return ans
+"""
+
 // Approach 2
 // For each level of recursion generate subsets so that each length of subsets are covered.
 // For level 1 generate 1-lenght subsets, for 2 generate 2-length subsets and so on.

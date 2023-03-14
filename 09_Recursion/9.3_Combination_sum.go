@@ -28,3 +28,28 @@ func combinationSum(candidates []int, target int) [][]int {
 	helper(candidates, target, 0, ds, &res)
 	return res
 }
+
+"""
+// Python Code
+class Solution:
+    def helper(self, nums, target, ind, ds, res):
+        if ind == len(nums):
+            if target == 0:
+                res.append(ds.copy())
+            return
+
+        # Pick
+        temp = ds.copy()
+        if nums[ind] <= target:
+            ds.append(nums[ind])
+            self.helper(nums, target-nums[ind], ind, ds, res)
+
+        # Not Pick
+        self.helper(nums, target, ind+1, temp, res)
+
+
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res, ds = list(), list()
+        self.helper(candidates, target, 0, ds, res)
+        return res
+"""
