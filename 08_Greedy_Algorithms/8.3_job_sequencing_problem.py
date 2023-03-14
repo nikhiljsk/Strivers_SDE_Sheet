@@ -1,4 +1,4 @@
-# Approach 1 - TLE!
+# Approach 1
 # O(N*M)+O(N * LogN), O(M) - M is max_deadline
 def JobScheduling(self,Jobs,n):
     # Sort based on profit

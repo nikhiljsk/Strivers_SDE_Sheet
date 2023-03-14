@@ -56,3 +56,30 @@ func subsetsWithDup(nums []int) [][]int {
 	helper(nums, 0, ds, &res)
 	return res
 }
+
+"""
+// Python Code
+class Solution:
+    def helper(self, nums, ind, ds, res):
+        res.append(ds.copy())
+
+        for i in range(ind, len(nums)):
+            # Skip Duplication
+            if i != ind and nums[i] == nums[i-1]:
+                continue
+
+            # Recursion
+            ds.append(nums[i])
+            self.helper(nums, i+1, ds, res)
+
+            # Pop
+            ds.pop()
+
+
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        res = list()
+        ds = list()
+        nums.sort()
+        self.helper(nums, 0, ds, res)
+        return res
+"""

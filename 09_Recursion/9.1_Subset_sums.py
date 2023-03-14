@@ -4,13 +4,13 @@ def helper(self, arr, ind, summ, res):
     if ind == len(arr):
         res.append(summ)
         return
-    
+
     # Include
     self.helper(arr, ind+1, summ+arr[ind], res)
-    
+
     # Exclude
     self.helper(arr, ind+1, summ, res)
-    
+
     return res
 
 
@@ -42,3 +42,7 @@ def subsetSums(self, arr, N):
 # 	helper(nums, 0, ds, &res)
 # 	return res
 # }
+
+
+# TODO - Followup
+# Power Set - Brute Force

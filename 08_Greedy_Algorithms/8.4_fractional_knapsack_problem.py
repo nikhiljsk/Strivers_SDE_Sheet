@@ -1,6 +1,6 @@
 # Approach 1
 # Fractional Knapsack
-# O(N), O(1)
+# O(NLogN + N), O(1)
 def fractionalknapsack(self, W,arr,n):
     arr = sorted(arr, reverse=True, key = lambda x: x.value/x.weight)
 
@@ -11,7 +11,10 @@ def fractionalknapsack(self, W,arr,n):
             curr_w += a.weight
         else:
             rem = W-curr_w
-            max_p += ((rem)/a.weight)*(a.value)
+            max_p += (rem * a.value) / a.weight
             curr_w += rem
             break
     return max_p
+
+# TODO Followup
+# DP for 0/1 Knapsack
