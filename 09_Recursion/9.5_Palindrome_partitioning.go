@@ -34,3 +34,33 @@ func isPal(s string, start, end int) bool {
 	}
 	return true
 }
+
+
+"""
+// Python Code
+class Solution:
+    def isPal(self, s, start, end):
+        while start < end:
+            if s[start] != s[end]:
+                return False
+            start+=1
+            end-=1
+        return True
+
+
+    def helper(self, s, ind, ds, res):
+        if ind == len(s):
+            res.append(ds.copy())
+            return
+
+        for i in range(ind, len(s)):
+            if self.isPal(s, ind, i):
+                ds.append(s[ind:i+1])
+                self.helper(s, i+1, ds, res)
+                ds.pop()
+
+    def partition(self, s: str) -> List[List[str]]:
+        res = list()
+        self.helper(s, 0, [], res)
+        return res
+"""
