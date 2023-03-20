@@ -41,3 +41,37 @@ func helper(board [][]byte) bool {
 func solveSudoku(board [][]byte) {
 	helper(board)
 }
+
+"""
+// Python Code
+class Solution:
+    def isValid(self, board, row, col, num):
+        for i in range(len(board)):
+            if board[i][col] == num:
+                return False
+            if board[row][i] == num:
+                return False
+            if board[3*(row//3) + i//3][3*(col//3) + i%3] == num:
+                return False
+        return True
+
+
+    def helper(self, board):
+        for i in range(len(board)):
+            for j in range(len(board)):
+                if board[i][j] != ".":
+                    continue
+
+                for k in range(1, 10):
+                    if self.isValid(board, i, j, str(k)):
+                        board[i][j] = str(k)
+                        if self.helper(board):
+                            return True
+                        else:
+                            board[i][j] = "."
+                return False
+        return True
+
+    def solveSudoku(self, board: List[List[str]]) -> None:
+        self.helper(board)
+"""

@@ -116,3 +116,43 @@ func solveNQueens(n int) [][]string {
 	helper(0, board, &ans, leftRow, upperDiag, lowerDiag, n)
 	return ans
 }
+
+"""
+// Python Code
+class Solution:
+    def helper(self, board, col, left, upperD, lowerD, res):
+        if col == len(board):
+            res.append(board.copy())
+            return
+
+        n = len(board)
+        for row in range(0, n):
+            if left[row] == 0 and upperD[n-1+col-row] == 0 and lowerD[col+row] == 0:
+                val = list(board[row])
+                val[col] = 'Q'
+                board[row] = ''.join(val)
+
+                left[row] = 1
+                lowerD[row+col] = 1
+                upperD[n-1+col-row] = 1
+
+                self.helper(board, col+1, left, upperD, lowerD, res)
+
+                left[row] = 0
+                lowerD[row+col] = 0
+                upperD[n-1+col-row] = 0
+
+                val = list(board[row])
+                val[col] = '.'
+                board[row] = ''.join(val)
+
+
+
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        left, upperD, lowerD = [0]*n, [0]*(2*n-1), [0]*(2*n-1)
+        res, board = list(), list()
+        for i in range(n):
+            board.append(["."*n][0])
+        self.helper(board, 0, left, upperD, lowerD, res)
+        return res
+"""

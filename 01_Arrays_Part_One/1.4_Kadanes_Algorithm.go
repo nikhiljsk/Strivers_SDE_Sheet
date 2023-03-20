@@ -80,7 +80,6 @@ func maxSubArray(nums []int) int {
 		} else {
 			localMax += v
 		}
-		localMax = max(v, localMax+v)
 		if globalMax < localMax {
 			globalMax = localMax
 			// Store the result
@@ -91,6 +90,29 @@ func maxSubArray(nums []int) int {
 	fmt.Println(res[0], res[1])
 	return globalMax
 }
+
+"""
+// Python Solution - Consider this the final Solution tha works perfectly
+class Solution:
+    def maxSubArraySum(self, nums, N):
+    	localMax, globalMax = -2147483648, -2147483648
+    	start = 0
+    	res = [0, 0]
+    	for i in range(len(nums)):
+    	    v = nums[i]
+    		if v > localMax+v:
+    			localMax = v
+    			start = i
+    		else:
+    			localMax += v
+
+    		if globalMax < localMax:
+    			globalMax = localMax
+    			res[0] = start
+    			res[1] = i
+    	# print(res[0], res[1])
+    	return globalMax
+"""
 
 // Approach - Yes
 // Implementation - No - max(local, local+i), here it should be (i, local+i)

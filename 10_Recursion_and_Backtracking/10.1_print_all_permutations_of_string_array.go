@@ -27,6 +27,30 @@ func permute(nums []int) [][]int {
     return res
 }
 
+"""
+// Python Code
+class Solution:
+    def helper(self, nums, ind, ds, res, found):
+        if len(ds) == len(nums):
+            res.append(ds.copy())
+            return
+        for i in range(len(nums)):
+            if nums[i] not in found:
+                found[nums[i]] = True
+                ds.append(nums[i])
+                self.helper(nums, i+1, ds, res, found)
+                ds.pop()
+                del found[nums[i]]
+
+
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = list()
+        found = dict()
+        self.helper(nums, 0, [], res, found)
+        return res
+
+"""
+
 // Approach 2
 // Intelligently using swapping
 // O(N! * N), O(1) - If we ignore stack level N, and also result N!
@@ -49,3 +73,23 @@ func permute(nums []int) [][]int {
     helper(nums, 0, &res)
     return res
 }
+
+"""
+// Python Code
+class Solution:
+    def helper(self, nums, ind, res):
+        if ind == len(nums):
+            res.append(nums.copy())
+            return
+        for i in range(ind, len(nums)):
+            nums[i], nums[ind] = nums[ind], nums[i]
+            self.helper(nums, ind+1, res)
+            nums[i], nums[ind] = nums[ind], nums[i]
+
+
+
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = list()
+        self.helper(nums, 0, res)
+        return res
+"""
