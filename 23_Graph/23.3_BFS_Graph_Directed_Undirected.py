@@ -42,6 +42,7 @@ def BFSHelper(adj, i, vis):
                 q.append(degree)
     return res
 
+
 def createAdjList(vertex, edges):
     adjList = [[] for _ in range(vertex)]
 
